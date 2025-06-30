@@ -1,0 +1,1055 @@
+{
+	"info": {
+		"_postman_id": "b681f95f-0746-4a71-a19c-ac877becd298",
+		"name": "DevBoard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43090783"
+	},
+	"item": [
+		{
+			"name": "API Key",
+			"item": [
+				{
+					"name": "Generate Api Key",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/apikey/generate-api-key",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"apikey",
+								"generate-api-key"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete API Key",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/user/apikey/delete",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"apikey",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Health-Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/healthcheck",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullname",
+									"value": "fullname",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "user_name01",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/registeruser",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"registeruser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user_login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/login",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user_logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/user/logout",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"fullname\": \"\",\r\n    \"username\": \"\",\r\n    \"role\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/update",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend Email Verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/user//verify-email",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"",
+								"verify-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify-email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/user/verify-email/:verifyEmailToken",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"verify-email",
+								":verifyEmailToken"
+							],
+							"variable": [
+								{
+									"key": "verifyEmailToken",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot password request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/password/reset",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Forgot Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"\",\r\n    \"confirmPassword\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/password/reset/:forgotpasswordToken",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"password",
+								"reset",
+								":forgotpasswordToken"
+							],
+							"variable": [
+								{
+									"key": "forgotpasswordToken",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"\",\r\n    \"confirmPassword\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/user/reset-password",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/user/current-user",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"user",
+								"current-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "create project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project_Title\": \"\",\r\n    \"project_Description\": \"\",\r\n    \"memberEmail\": [\"\",\"\"]\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/create-project",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"create-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all projects",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/allProjects",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"allProjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project Members",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "7b6ba0bc335af25be9636bcb11566d3fb39ceedfff96ad4af8893ee3a23d66e0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/members",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"members"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Member",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"memberEmail\": \"\",\r\n    \"role\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/add-member/:projectId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"add-member",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/delete/:projectId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"delete",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/delete/:projectId/:memberId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"delete",
+								":projectId",
+								":memberId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "memberId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/update-role/:projectId/:memberId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								"update-role",
+								":projectId",
+								":memberId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "memberId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eport as json",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "142e73ee82c77b4924820f450a38ef1145df08fd68709dda2094bec72d84cc3d",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/export-json",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"export-json"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "attachments",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "title",
+									"value": "Title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description",
+									"type": "text"
+								},
+								{
+									"key": "assignedTo",
+									"value": "email",
+									"type": "text"
+								},
+								{
+									"key": "dueDate",
+									"value": "YYYY-DD-MM",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "status",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/task/create-task",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"task",
+								"create-task"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "142e73ee82c77b4924820f450a38ef1145df08fd68709dda2094bec72d84cc3d",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/task/:taskId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"task",
+								":taskId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "taskId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "142e73ee82c77b4924820f450a38ef1145df08fd68709dda2094bec72d84cc3d",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/task/:taskId/delete",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"task",
+								":taskId",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "taskId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newTitle\": \"\",\r\n    \"newDesc\": \"\",\r\n    \"newAssignedTo\": \"\",\r\n    \"newStatus\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/task/:taskId/update",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"task",
+								":taskId",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "taskId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "142e73ee82c77b4924820f450a38ef1145df08fd68709dda2094bec72d84cc3d",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/task?page=1&limit=3",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"task"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "Create Notes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"note\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/note/create-note",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"note",
+								"create-note"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Note",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/note/:noteId/delete",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"note",
+								":noteId",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "noteId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Note By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/note/:noteId",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"note",
+								":noteId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "noteId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/note",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"note"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Notes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{devBoard-server}}/project/:projectId/note/:noteId/update",
+							"host": [
+								"{{devBoard-server}}"
+							],
+							"path": [
+								"project",
+								":projectId",
+								"note",
+								":noteId",
+								"update"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "noteId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

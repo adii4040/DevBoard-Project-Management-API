@@ -20,31 +20,9 @@ DevBoard is a full-featured backend API for managing users, projects, tasks, rol
 
 ## 🧾 Project Structure
 
-Backend/
-│
-├── node_modules/ # Installed packages
-├── public/temp/ # Temp uploads
-├── src/
-│ ├── controllers/ # Route logic
-│ ├── db/ # DB connection
-│ ├── middlewares/ # Custom middlewares (auth, paginate, multer)
-│ ├── models/ # Mongoose models
-│ ├── routes/ # Express route handlers
-│ ├── Utils/ # Utilities (API response, error, mail, cloudinary)
-│ ├── Validators/ # Zod validators
-│ ├── app.js # App configuration
-│ └── index.js # Server entry point
-│
-├── .env # Your secrets (not committed)
-├── .env.sample # Sample env for collaborators
-├── .gitignore
-├── package.json
-├── package-lock.json
-└── README.md
+<pre><code>```bash Backend/ ├── node_modules/ # Installed packages ├── public/temp/ # Temp uploads ├── src/ │ ├── controllers/ # Route logic │ ├── db/ # DB connection │ ├── middlewares/ # Custom middlewares (auth, paginate, multer) │ ├── models/ # Mongoose models │ ├── routes/ # Express route handlers │ ├── Utils/ # Utilities (API response, error, mail, cloudinary) │ ├── Validators/ # Zod validators │ ├── app.js # App configuration │ └── index.js # Server entry point ├── .env # Your secrets (not committed) ├── .env.sample # Sample env for collaborators ├── .gitignore ├── package.json ├── package-lock.json └── README.md ``` </code></pre>
 
-yaml
-Copy
-Edit
+
 
 
 ---
@@ -72,10 +50,6 @@ npm install
 # 4. Setup environment
 cp .env.sample .env
 # fill required env values
-
-📄 Environment Variables
-Here's a sample .env.sample:
-
 PORT = 8000
 MONGODB_URL=YOUR_MONGODB_URL
 CORS_ORIGIN = *
@@ -101,19 +75,90 @@ CLOUDINARY_API_SECRET=YOUR_CLOUDINARY_API_SECRET
 npm run dev
 ```
 
-📮 API Endpoints Overview
+## 📬 Postman API Collection
 
-| Method | Endpoint                                  | Description              |
-| ------ | ----------------------------------------- | ------------------------ |
-| POST   | `/api/v1/user/register`                   | Register a new user      |
-| POST   | `/api/v1/user/login`                      | User login               |
-| POST   | `/api/v1/project`                         | Create a project (admin) |
-| GET    | `/api/v1/project/:id`                     | Get project by ID        |
-| GET    | `/api/v1/project/:id/task?page=1&limit=5` | Paginated task list      |
-| POST   | `/api/v1/project/:id/task/create-task`    | Add new task to project  |
-| GET    | `/api/v1/notes/:taskId`                   | Get notes for a task     |
+You can test all endpoints using the Postman collection below:
+
+🔗 [→ DevBoard.postman_collection.json](./docs/DevBoard.postman_collection.json)
+
+Make sure to set the following environment variable in Postman:
+
+| Key               | Example Value            |
+|------------------|--------------------------|
+| `devBoard-server`| `http://localhost:8000/api/v1` |
+
+All request bodies are cleared to just show placeholder fields.
+
+## 📸 Screenshots
+
+### 🔧 API Testing with Postman
+![Postman Collection](./docs/postman-preview.png)
+
+## 📘 API Documentation
+
+### 🔐 Authentication Routes
+| Method | Endpoint                          | Description             | Auth Required |
+| ------ | --------------------------------- | ----------------------- | ------------- |
+| POST   | `/api/v1/register-user`           | Register new user       | ❌ No          |
+| POST   | `/api/v1/user_login`              | Login user              | ❌ No          |
+| GET    | `/api/v1/current-user`            | Get logged-in user data | ✅ Yes         |
+| GET    | `/api/v1/verify-email`            | Verify user's email     | ❌ No          |
+| POST   | `/api/v1/forgot-password-request` | Request password reset  | ❌ No          |
+| PUT    | `/api/v1/reset-password`          | Reset password          | ❌ No          |
 
 
+### 🧪 API Key Routes
+| Method | Endpoint                  | Description      |
+| ------ | ------------------------- | ---------------- |
+| POST   | `/api/v1/generate-apikey` | Generate API key |
+| DELETE | `/api/v1/delete-apikey`   | Delete API key   |
+
+### 📂 Project Routes
+| Method | Endpoint                                 | Description                   |
+| ------ | ---------------------------------------- | ----------------------------- |
+| POST   | `/api/v1/project/create`                 | Create new project            |
+| GET    | `/api/v1/project`                        | Get all projects              |
+| GET    | `/api/v1/project/:projectId`             | Get project by ID             |
+| POST   | `/api/v1/project/:projectId/members`     | Add member to project         |
+| DELETE | `/api/v1/project/:projectId/member/:id`  | Remove member from project    |
+| PUT    | `/api/v1/project/:projectId/role`        | Update member role            |
+| GET    | `/api/v1/project/:projectId/export-json` | Download project data as JSON |
+
+### 📝 Task Routes
+| Method | Endpoint                                         | Description                     |
+| ------ | ------------------------------------------------ | ------------------------------- |
+| POST   | `/api/v1/project/:projectId/task/create-task`    | Create a task                   |
+| GET    | `/api/v1/project/:projectId/task`                | Get all tasks (with pagination) |
+| GET    | `/api/v1/project/:projectId/task/:taskId`        | Get task by ID                  |
+| PUT    | `/api/v1/project/:projectId/task/:taskId/update` | Update task                     |
+| DELETE | `/api/v1/project/:projectId/task/:taskId/delete` | Delete task                     |
+
+### 🗒️ Notes Routes
+| Method | Endpoint                           | Description         |
+| ------ | ---------------------------------- | ------------------- |
+| POST   | `/api/v1/project/:projectId/notes` | Create project note |
+| GET    | `/api/v1/project/:projectId/notes` | Get all notes       |
+| PUT    | `/api/v1/notes/:noteId/update`     | Update note         |
+| DELETE | `/api/v1/notes/:noteId/delete`     | Delete note         |
+
+## 🔐 Authorization
+All protected routes require:
+-   *x-api-key: <API_KEY>*
+
+
+## 📚 Built With
+
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [MongoDB + Mongoose](https://mongoosejs.com/)
+- [Zod](https://zod.dev/)
+- [Multer](https://github.com/expressjs/multer)
+- [Cloudinary](https://cloudinary.com/)
+- [Nodemailer](https://nodemailer.com/)
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 
 
