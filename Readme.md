@@ -61,10 +61,10 @@ Edit
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/your-username/devboard-backend.git
+git clone https://github.com/adii4040/DevBoard-Project-Management-API
 
 # 2. Navigate into project
-cd devboard-backend
+cd Backend
 
 # 3. Install dependencies
 npm install
@@ -81,7 +81,7 @@ npm run dev
 Here's a sample .env.sample:
 
 PORT = 8000
-MONGODB_URL = YOUR_MONGODB_URL
+MONGODB_URL=YOUR_MONGODB_URL
 CORS_ORIGIN = *
 BASE_URL=YOUR_BASE_URL
 
