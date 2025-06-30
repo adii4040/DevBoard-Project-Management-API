@@ -73,10 +73,6 @@ npm install
 cp .env.sample .env
 # fill required env values
 
-# 5. Start the development server
-npm run dev
-```
-
 📄 Environment Variables
 Here's a sample .env.sample:
 
@@ -100,6 +96,10 @@ CLOUDINARY_CLOUD_NAME=YOUR_CLOUDINARY_CLOUD_NAME
 CLOUDINARY_API_KEY=YOUR_CLOUDINARY_API_KEY
 CLOUDINARY_API_SECRET=YOUR_CLOUDINARY_API_SECRET
 
+
+# 5. Start the development server
+npm run dev
+```
 
 📮 API Endpoints Overview
 
